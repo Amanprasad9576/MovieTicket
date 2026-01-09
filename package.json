@@ -1,0 +1,16 @@
+{
+  "name": "movie",
+  "version": "1.0.0",
+  "description": "A Project of Ticket Boking",
+  "license": "ISC",
+  "author": "Aman Prasad",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon src/index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11"
+  }
+}
