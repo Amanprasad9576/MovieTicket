@@ -1,9 +1,9 @@
 const express = require('express');
-
 const router = express.Router();
 
-router.get('/movie',(req,res)=>{
-    res.send("Movie router");
-})
+router.get('/', (req, res) => {
+    res.send("User router");
+});
 
 module.exports = router;
+

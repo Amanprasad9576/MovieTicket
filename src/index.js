@@ -7,6 +7,7 @@ const apiRouter = require('./routers/apiRouter.js');
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 app.use('/api',apiRouter);
 
@@ -26,9 +27,5 @@ app.listen(serverConfig.PORT, async() => {
 
 
 
-/*
-https://localhost/api/v1/movie 
- api --> v1 --> movie 
 
-*/
 

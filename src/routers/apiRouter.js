@@ -1,10 +1,9 @@
 const express = require('express');
-const { MovieRouter } = require('./v1/index');
-
 const router = express.Router();
 
-router.use('/v1',MovieRouter);
+const v1Router = require('./v1');
+
+router.use('/v1',v1Router);
 
 module.exports = router;
-
 
