@@ -28,7 +28,7 @@ const movieSchema = new mongoose.Schema({
     language:{
         type:[String],
         required:true,
-        default:"English"
+        default: ["English"]
     },
     releaseDate:{
         type:Date,
@@ -42,5 +42,6 @@ const movieSchema = new mongoose.Schema({
 }, {timestamps:true});
 
 const Movie = mongoose.model('Movie',movieSchema);
+
 module.exports = Movie;
 

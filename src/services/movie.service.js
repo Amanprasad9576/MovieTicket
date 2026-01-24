@@ -1,8 +1,12 @@
-const { MovieRepository } = require('../repositories');
+const  MovieRepository  = require('../repositories/movie-repository');
+
+console.log("MovieRepository in service:", MovieRepository);
+console.log(MovieRepository.create);
 
 const createMovie = async (movieData) => {
     try {
-        const movie = await MovieRepository.createMovieRepository(movieData);
+        const movie = await MovieRepository.create(movieData);
+        console.log("Movie created successfully in service");
         return movie;
     } catch (error) {
         console.log('Error in movie service layer', error);
@@ -12,7 +16,7 @@ const createMovie = async (movieData) => {
 
 const getMovie = async (movieId) => {
     try {
-        const response = await MovieRepository.getMovieById(movieId);
+        const response = await MovieRepository.getById(movieId);
         return response;
     } catch (error) {
         console.log("Error in the service layer", error);
@@ -22,7 +26,7 @@ const getMovie = async (movieId) => {
 
 const deleteMovie = async (movieId) =>{
     try {
-        const response = await MovieRepository.deleteMovieById(movieId);
+        const response = await MovieRepository.delete(movieId);
         return response;
     } catch (error) {
         console.log("Error in the service layer",error);
@@ -30,9 +34,21 @@ const deleteMovie = async (movieId) =>{
     }
 };
 
+const updateMovie = async (movieId, data) => {
+  try {
+    const response = await MovieRepository.update(movieId, data);
+    return response;
+  } catch (error) {
+    console.log('Error in movie service layer', error);
+    throw error;
+  }
+};
+
+
 
 module.exports = {
     createMovie,
     getMovie,
-    deleteMovie
+    deleteMovie,
+    updateMovie
 };

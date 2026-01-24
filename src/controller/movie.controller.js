@@ -1,15 +1,17 @@
 const MovieService = require('../services/movie.service');
+const StatusCodes = require('http-status-codes');
 
+console.log("Movie Service:", MovieService);
 const createMovie = async(req,res)=>{
     try {
        const movie = await MovieService.createMovie(req.body);
-       res.status(200).json({
+       res.status(StatusCodes.CREATED).json({
            success:true,
            message:"Movie created",
            data:movie
        });
     } catch(err){
-        res.status(500).json({
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             success:false,
             message:"Error in creating movie",
             error:err.message,
@@ -70,7 +72,7 @@ const deleteMovie = async (req,res)=>{
 const updateMovie = async (req,res)=>{
     try {
         const data =req.body;
-        const response = await Movie.findByIdAndUpdate(req.params.id,data);
+        const response = await MovieService.updateMovie(req.params.id,data);
         if(!response){
             res.status(404).json({
                 success:false,

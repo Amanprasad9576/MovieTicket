@@ -1,15 +1,19 @@
 const { User } = require('../models');
+const crudRepository = require('./crud-repository');
 
-const createUser = async (userData) =>{
-    try {
-        const response = await User.create(userData);
-        return response;
-    } catch (error) {
-        console.log("Error in creating the user repository", error);
-        throw error;
+const userRepository = {
+    ...crudRepository(User),
+
+    getByEmail: async function (email){
+      const user = await User.findOne({email});
+      return user;
+    },
+    
+    getByUsername: async function (username) {
+      const user = await User.findOne({ username }).select('-password'); // exclude password
+      return user;
     }
-}
+  };
 
-module.exports = {
-    createUser,
-}
+
+module.exports = userRepository;

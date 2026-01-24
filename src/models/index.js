@@ -1,10 +1,10 @@
 
-module.exports = {
-    Movie: require('./movie'),
-    User: require('./user'),
-    Booking: require('./booking'),
-    Payment: require('./payment'),
-    Hall: require('./hall'),
-    Show: require('./show')
-}
 
+module.exports = {
+    Movie: require('./movie.js'),
+    User: require('./user.js'),
+    Booking: require('./booking.js'),
+    Payment: require('./payment.js'),
+    Hall: require('./hall.js'),
+    Show: require('./show.js')
+}
